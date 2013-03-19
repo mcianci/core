@@ -131,6 +131,20 @@ class OC {
 			OC::$SERVERROOT . '/lib' . PATH_SEPARATOR .
 				get_include_path()
 		);
+
+		OC::$SUBURI = str_replace("\\", "/", substr(realpath($_SERVER["SCRIPT_FILENAME"]), strlen(OC::$SERVERROOT)));
+		$scriptName = OC_Request::scriptName();
+		if (substr($scriptName, -1) == '/') {
+			$scriptName .= 'index.php';
+			//make sure suburi follows the same rules as scriptName
+			if (substr(OC::$SUBURI, -9) != 'index.php') {
+				if (substr(OC::$SUBURI, -1) != '/') {
+					OC::$SUBURI = OC::$SUBURI . '/';
+				}
+				OC::$SUBURI = OC::$SUBURI . 'index.php';
+			}
+		}
+
 		// Set paths manually
 		OC::$WEBROOT = OC_Config::getValue('ocwebroot');
 		OC::$THIRDPARTYROOT = OC_Config::getValue('octhirdpartyroot');
