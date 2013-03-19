@@ -123,8 +123,15 @@ class OC {
 	}
 
 	public static function initPaths() {
+		// Calculate the root directories
+		OC::$SERVERROOT = str_replace("\\", '/', substr(__DIR__, 0, -4));
+
+		// Ensure we can find OC_Config
+		set_include_path(
+			OC::$SERVERROOT . '/lib' . PATH_SEPARATOR .
+				get_include_path()
+		);
 		// Set paths manually
-		OC::$SERVERROOT = OC_Config::getValue('ocserverroot');
 		OC::$WEBROOT = OC_Config::getValue('ocwebroot');
 		OC::$THIRDPARTYROOT = OC_Config::getValue('octhirdpartyroot');
 		OC::$THIRDPARTYWEBROOT = OC_Config::getValue('octhirdpartywebroot');
