@@ -195,11 +195,11 @@ class OC_TemplateLayout extends OC_Template {
 				// Is it part of an app?
 				$append = false;
 				foreach( OC::$APPSROOTS as $apps_dir) {
-					if(self::appendIfExist($files, $apps_dir['path'], OC::$WEBROOT.$apps_dir['url'], "$script$fext.js")) {
+					if(self::appendIfExist($files, $apps_dir['path'], $apps_dir['url'], "$script$fext.js")) {
 						$append = true;
 						break;
 					}
-					elseif(self::appendIfExist($files, $apps_dir['path'], OC::$WEBROOT.$apps_dir['url'], "$script.js")) {
+					elseif(self::appendIfExist($files, $apps_dir['path'], $apps_dir['url'], "$script.js")) {
 						$append = true;
 						break;
 					}
