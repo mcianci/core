@@ -70,7 +70,7 @@ jQuery,$$,OC,$,oc_webroot,oc_appswebroots,oc_current_user,t,Files,FileList,FileA
    <arg value="${basedir}/build/logs/phploc.csv" />
    <arg path="${basedir}" />
    <arg value="--exclude" />
-   <arg value="${basedir}/3rdparty/" />
+   <arg value="${basedir}/3rdparty/" /><!-- May not be relevant since static-path, since user could set 3rdparty root outside basedir -->
   </exec>
  </target>
 
@@ -80,7 +80,7 @@ jQuery,$$,OC,$,oc_webroot,oc_appswebroots,oc_current_user,t,Files,FileList,FileA
    <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
    <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
    <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
-   <arg value="--ignore=${basedir}/3rdparty/"/>
+   <arg value="--ignore=${basedir}/3rdparty/"/><!-- May not be relevant since static-path, since user could set 3rdparty root outside basedir -->
    <arg path="${basedir}" />
   </exec>
  </target>
@@ -94,7 +94,7 @@ jQuery,$$,OC,$,oc_webroot,oc_appswebroots,oc_current_user,t,Files,FileList,FileA
    <arg value="--reportfile" />
    <arg value="${basedir}/build/logs/pmd.xml" />
    <arg value="--exclude" />
-   <arg value="${basedir}/3rdparty/" />
+   <arg value="${basedir}/3rdparty/" /><!-- May not be relevant since static-path, since user could set 3rdparty root outside basedir -->
   </exec>
  </target>
 
@@ -105,7 +105,7 @@ jQuery,$$,OC,$,oc_webroot,oc_appswebroots,oc_current_user,t,Files,FileList,FileA
    <arg value="xml" />
    <arg value="${basedir}/build/phpmd.xml" />
    <arg value="--exclude" />
-   <arg value="${basedir}/3rdparty/" />
+   <arg value="${basedir}/3rdparty/" /><!-- May not be relevant since static-path, since user could set 3rdparty root outside basedir -->
   </exec>
  </target>
 
@@ -136,7 +136,7 @@ jQuery,$$,OC,$,oc_webroot,oc_appswebroots,oc_current_user,t,Files,FileList,FileA
  <target name="phpcpd" description="Find duplicate code using PHPCPD">
   <exec executable="phpcpd">
    <arg value="--exclude" />
-   <arg value="${basedir}/3rdparty/" />
+   <arg value="${basedir}/3rdparty/" /><!-- May not be relevant since static-path, since user could set 3rdparty root outside basedir -->
    <arg path="${basedir}" />
   </exec>
  </target>
@@ -146,7 +146,7 @@ jQuery,$$,OC,$,oc_webroot,oc_appswebroots,oc_current_user,t,Files,FileList,FileA
    <arg value="--log-pmd" />
    <arg value="${basedir}/build/logs/pmd-cpd.xml" />
    <arg value="--exclude" />
-   <arg value="${basedir}/3rdparty/" />
+   <arg value="${basedir}/3rdparty/" /><!-- May not be relevant since static-path, since user could set 3rdparty root outside basedir -->
    <arg path="${basedir}" />
   </exec>
  </target>
@@ -173,7 +173,7 @@ jQuery,$$,OC,$,oc_webroot,oc_appswebroots,oc_current_user,t,Files,FileList,FileA
    <arg value="--output" />
    <arg path="${basedir}/build/code-browser" />
    <arg value="--exclude" />
-   <arg value="${basedir}/3rdparty/" />
+   <arg value="${basedir}/3rdparty/" /><!-- May not be relevant since static-path, since user could set 3rdparty root outside basedir -->
   </exec>
  </target>
 </project>

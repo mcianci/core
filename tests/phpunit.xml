@@ -8,7 +8,7 @@
 	<whitelist processUncoveredFilesFromWhitelist="true">
 		<directory suffix=".php">..</directory>
 		<exclude>
-			<directory suffix=".php">../3rdparty</directory>
+			<directory suffix=".php">../3rdparty</directory><!-- May not be relevant since static-path, since user could set 3rdparty root outside basedir -->
 		</exclude>
 	</whitelist>
 	<listeners>
