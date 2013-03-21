@@ -1,3 +1,4 @@
+##ownCloud
 ownCloud gives you freedom and control over your own data.
 A personal cloud which runs on your own server.
 
@@ -18,3 +19,7 @@ https://www.transifex.com/projects/p/owncloud/
 
 For more detailed information about translations:
 http://owncloud.org/dev/translation/
+
+##NCTU fork exclusive features
+* Static path config
+* Correct language detection (previously zh_TW would render as zh_CN) - **Will make pull request to upstream**
