@@ -91,7 +91,7 @@ class Scanner {
 	 * scan all the files in a folder and store them in the cache
 	 *
 	 * @param string $path
-	 * @param SCAN_RECURSIVE/SCAN_SHALLOW $recursive
+	 * @param bool $recursive
 	 * @param bool $onlyChilds
 	 * @return int the size of the scanned folder or -1 if the size is unknown at this stage
 	 */
@@ -151,6 +151,7 @@ class Scanner {
 	private function isIgnoredFile($file) {
 		if ($file === '.' || $file === '..'
 			|| pathinfo($file, PATHINFO_EXTENSION) === 'part'
+			|| \OC\Files\Filesystem::isFileBlacklisted($file)
 		) {
 			return true;
 		}

@@ -26,10 +26,10 @@ class Upgrade {
 	}
 
 	/**
-	 * Preform a shallow upgrade
+	 * Preform a upgrade a path and it's childs
 	 *
 	 * @param string $path
-	 * @param int $mode
+	 * @param bool $mode
 	 */
 	function upgradePath($path, $mode = Scanner::SCAN_RECURSIVE) {
 		if (!$this->legacy->hasItems()) {
@@ -39,28 +39,36 @@ class Upgrade {
 
 		if ($row = $this->legacy->get($path)) {
 			$data = $this->getNewData($row);
-			$this->insert($data);
-
-			$this->upgradeChilds($data['id'], $mode);
+			if ($data) {
+				$this->insert($data);
+				$this->upgradeChilds($data['id'], $mode);
+			}
 		}
 	}
 
 	/**
+	 * upgrade all child elements of an item
+	 *
 	 * @param int $id
+	 * @param bool $mode
 	 */
 	function upgradeChilds($id, $mode = Scanner::SCAN_RECURSIVE) {
 		$children = $this->legacy->getChildren($id);
 		foreach ($children as $child) {
 			$childData = $this->getNewData($child);
 			\OC_Hook::emit('\OC\Files\Cache\Upgrade', 'migrate_path', $child['path']);
-			$this->insert($childData);
-			if ($mode == Scanner::SCAN_RECURSIVE) {
-				$this->upgradeChilds($child['id']);
+			if ($childData) {
+				$this->insert($childData);
+				if ($mode == Scanner::SCAN_RECURSIVE) {
+					$this->upgradeChilds($child['id']);
+				}
 			}
 		}
 	}
 
 	/**
+	 * insert data into the new cache
+	 *
 	 * @param array $data the data for the new cache
 	 */
 	function insert($data) {
@@ -76,6 +84,8 @@ class Upgrade {
 	}
 
 	/**
+	 * check if an item is already in the new cache
+	 *
 	 * @param string $storage
 	 * @param string $pathHash
 	 * @param string $id
@@ -95,20 +105,25 @@ class Upgrade {
 	 */
 	function getNewData($data) {
 		$newData = $data;
-		list($storage, $internalPath) = \OC\Files\Filesystem::resolvePath($data['path']);
 		/**
 		 * @var \OC\Files\Storage\Storage $storage
 		 * @var string $internalPath;
 		 */
-		$newData['path_hash'] = md5($internalPath);
-		$newData['path'] = $internalPath;
-		$newData['storage'] = $this->getNumericId($storage);
-		$newData['parent'] = ($internalPath === '') ? -1 : $data['parent'];
-		$newData['permissions'] = ($data['writable']) ? \OCP\PERMISSION_ALL : \OCP\PERMISSION_READ;
-		$newData['storage_object'] = $storage;
-		$newData['mimetype'] = $this->getMimetypeId($newData['mimetype'], $storage);
-		$newData['mimepart'] = $this->getMimetypeId($newData['mimepart'], $storage);
-		return $newData;
+		list($storage, $internalPath) = \OC\Files\Filesystem::resolvePath($data['path']);
+		if ($storage) {
+			$newData['path_hash'] = md5($internalPath);
+			$newData['path'] = $internalPath;
+			$newData['storage'] = $this->getNumericId($storage);
+			$newData['parent'] = ($internalPath === '') ? -1 : $data['parent'];
+			$newData['permissions'] = ($data['writable']) ? \OCP\PERMISSION_ALL : \OCP\PERMISSION_READ;
+			$newData['storage_object'] = $storage;
+			$newData['mimetype'] = $this->getMimetypeId($newData['mimetype'], $storage);
+			$newData['mimepart'] = $this->getMimetypeId($newData['mimepart'], $storage);
+			return $newData;
+		} else {
+			\OC_Log::write('core', 'Unable to migrate data from old cache for '.$data['path'].' because the storage was not found', \OC_Log::ERROR);
+			return false;
+		}
 	}
 
 	/**
@@ -127,6 +142,8 @@ class Upgrade {
 	}
 
 	/**
+	 * get the numeric id for a mimetype
+	 *
 	 * @param string $mimetype
 	 * @param \OC\Files\Storage\Storage $storage
 	 * @return int
