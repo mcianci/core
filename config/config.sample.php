@@ -172,6 +172,4 @@ You must have at least 1 app folder writable or you must set the parameter : app
 	// Paths
 	'ocserverroot' => '',
 	'ocwebroot' => '',
-	'octhirdpartyroot' => '',
-	'octhirdpartywebroot' => '',
 );

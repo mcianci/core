@@ -153,8 +153,23 @@ class OC {
 		if ( !OC_Config::getValue('octhirdpartywebroot') ) exit('Missing \'octhirdpartywebroot\' config in config.php');
 		// Set paths manually
 		OC::$WEBROOT = OC_Config::getValue('ocwebroot');
-		OC::$THIRDPARTYROOT = OC_Config::getValue('octhirdpartyroot');
-		OC::$THIRDPARTYWEBROOT = OC_Config::getValue('octhirdpartywebroot');
+
+		// search the 3rdparty folder
+		if (OC_Config::getValue('3rdpartyroot', '') <> '' and OC_Config::getValue('3rdpartyurl', '') <> '') {
+			OC::$THIRDPARTYROOT = OC_Config::getValue('3rdpartyroot', '');
+			OC::$THIRDPARTYWEBROOT = OC_Config::getValue('3rdpartyurl', '');
+		} elseif (file_exists(OC::$SERVERROOT . '/3rdparty')) {
+			OC::$THIRDPARTYROOT = OC::$SERVERROOT;
+			OC::$THIRDPARTYWEBROOT = OC::$WEBROOT;
+		} elseif (file_exists(OC::$SERVERROOT . '/../3rdparty')) {
+			OC::$THIRDPARTYWEBROOT = rtrim(dirname(OC::$WEBROOT), '/');
+			OC::$THIRDPARTYROOT = rtrim(dirname(OC::$SERVERROOT), '/');
+		} else {
+			echo('3rdparty directory not found! Please put the ownCloud 3rdparty'
+				.' folder in the ownCloud folder or the folder above.'
+				.' You can also configure the location in the config.php file.');
+			exit;
+		}
 
 		// Read apps folder settings from config
 		$config_paths = OC_Config::getValue('apps_paths', array());
@@ -185,7 +200,7 @@ class OC {
 		set_include_path(
 			OC::$SERVERROOT . '/lib' . PATH_SEPARATOR .
 				OC::$SERVERROOT . '/config' . PATH_SEPARATOR .
-				OC::$THIRDPARTYROOT . PATH_SEPARATOR .
+				OC::$THIRDPARTYROOT . '/3rdparty' . PATH_SEPARATOR .
 				implode($paths, PATH_SEPARATOR) . PATH_SEPARATOR .
 				get_include_path() . PATH_SEPARATOR .
 				OC::$SERVERROOT
