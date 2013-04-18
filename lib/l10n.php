@@ -305,6 +305,9 @@ class OC_L10N{
 				}
 				foreach($available as $l) {
 					if ( $temp[0] == substr($l, 0, 2) ) {
+						if (is_null($app)) {
+							self::$language = $l;
+						}
 						return $l;
 					}
 				}

@@ -4,8 +4,21 @@
  * See the COPYING-README file.
  */
 
+function setQuota (uid, quota, ready) {
+	$.post(
+		OC.filePath('settings', 'ajax', 'setquota.php'),
+		{username: uid, quota: quota},
+		function (result) {
+			if (ready) {
+				ready(result.data.quota);
+			}
+		}
+	);
+}
+
 var UserList = {
 	useUndo: true,
+	availableGroups: [],
 
 	/**
 	 * @brief Initiate user deletion process in UI
@@ -71,15 +84,14 @@ var UserList = {
 		tr.attr('data-uid', username);
 		tr.attr('data-displayName', displayname);
 		tr.find('td.name').text(username);
-		tr.find('td.displayName').text(username);
+		tr.find('td.displayName').text(displayname);
 		var groupsSelect = $('<select multiple="multiple" class="groupsselect" data-placehoder="Groups" title="' + t('settings', 'Groups') + '"></select>').attr('data-username', username).attr('data-user-groups', groups);
 		tr.find('td.groups').empty();
 		if (tr.find('td.subadmins').length > 0) {
 			var subadminSelect = $('<select multiple="multiple" class="subadminsselect" data-placehoder="subadmins" title="' + t('settings', 'Group Admin') + '">').attr('data-username', username).attr('data-user-groups', groups).attr('data-subadmin', subadmin);
 			tr.find('td.subadmins').empty();
 		}
-		var allGroups = String($('#content table').attr('data-groups')).split(', ');
-		$.each(allGroups, function (i, group) {
+		$.each(this.availableGroups, function (i, group) {
 			groupsSelect.append($('<option value="' + escapeHTML(group) + '">' + escapeHTML(group) + '</option>'));
 			if (typeof subadminSelect !== 'undefined' && group != 'admin') {
 				subadminSelect.append($('<option value="' + escapeHTML(group) + '">' + escapeHTML(group) + '</option>'));
@@ -118,6 +130,13 @@ var UserList = {
 		if (sort) {
 			UserList.doSort();
 		}
+
+		quotaSelect.singleSelect();
+		quotaSelect.on('change', function () {
+			var uid = $(this).parent().parent().attr('data-uid');
+			var quota = $(this).val();
+			setQuota(uid, quota);
+		});
 	},
 	// From http://my.opera.com/GreyWyvern/blog/show.dml/1671288
 	alphanum: function(a, b) {
@@ -188,7 +207,6 @@ var UserList = {
 						});
 					}
 				});
-				console.log('length', result.data.length);
 				if (result.data.length > 0) {
 					UserList.doSort();
 				}
@@ -218,7 +236,14 @@ var UserList = {
 							username: user,
 							group: group
 						},
-						function () {
+						function (response) {
+							if(response.status === 'success') {
+								if(UserList.availableGroups.indexOf(response.data.groupname) === -1 && response.data.action === 'add') {
+									UserList.availableGroups.push(response.data.groupname);
+								}
+							} else {
+								OC.Notification.show(response.data.message);
+							}
 						}
 					);
 				};
@@ -289,24 +314,13 @@ var UserList = {
 $(document).ready(function () {
 
 	UserList.doSort();
+	UserList.availableGroups = $('#content table').attr('data-groups').split(', ');
 	UserList.offset = $('tbody tr').length;
 	$('tbody tr:last').bind('inview', function (event, isInView, visiblePartX, visiblePartY) {
 		OC.Router.registerLoadedCallback(function () {
 			UserList.update();
 		});
 	});
-
-	function setQuota (uid, quota, ready) {
-		$.post(
-			OC.filePath('settings', 'ajax', 'setquota.php'),
-			{username: uid, quota: quota},
-			function (result) {
-				if (ready) {
-					ready(result.data.quota);
-				}
-			}
-		);
-	}
 
 	$('select[multiple]').each(function (index, element) {
 		UserList.applyMultiplySelect($(element));
@@ -421,6 +435,8 @@ $(document).ready(function () {
 					OC.dialogs.alert(result.data.message,
 						t('settings', 'Error creating user'));
 				} else {
+					var addedGroups = result.data.groups.split(', ');
+					UserList.availableGroups = $.unique($.merge(UserList.availableGroups, addedGroups));
 					if($('tr[data-uid="' + username + '"]').length === 0) {
 						UserList.add(username, username, result.data.groups, null, 'default', true);
 					}

@@ -77,6 +77,9 @@ $CONFIG = array(
 	/* URL of the appstore to use, server should understand OCS */
 	"appstoreurl" => "http://api.apps.owncloud.com/v1",
 
+	/* Domain name used by ownCloud for the sender mail address, e.g. no-reply@example.com */
+	"mail_domain" => "example.com",
+
 	/* Enable SMTP class debugging */
 	"mail_smtpdebug" => false,
 
@@ -92,8 +95,8 @@ $CONFIG = array(
 	/* SMTP server timeout in seconds for sending mail, depends on mail_smtpmode if this is used */
 	"mail_smtptimeout" => 10,
 
-/* SMTP connection prefix or sending mail, depends on mail_smtpmode if this is used.
-Can be '', ssl or tls */
+	/* SMTP connection prefix or sending mail, depends on mail_smtpmode if this is used.
+	Can be '', ssl or tls */
 	"mail_smtpsecure" => "",
 
 	/* authentication needed to send mail, depends on mail_smtpmode if this is used
@@ -123,6 +126,9 @@ Can be '', ssl or tls */
 	/* Check if ownCloud is up to date */
 	"updatechecker" => true,
 
+	/* Are we connected to the internet or are we running in a closed network? */
+	"has_internet_connection" => true,
+
 	/* Place to log to, can be owncloud and syslog (owncloud is log menu item in admin menu) */
 	"log_type" => "owncloud",
 
@@ -131,6 +137,10 @@ Can be '', ssl or tls */
 
 	/* Loglevel to start logging at. 0=DEBUG, 1=INFO, 2=WARN, 3=ERROR (default is WARN) */
 	"loglevel" => "",
+
+	/* Append All database query and parameters to the log file.
+	(whatch out, this option can increase the size of your log file)*/
+	"log_query" => false,
 
 	/* Lifetime of the remember login cookie, default is 15 days */
 	"remember_login_cookie_lifetime" => 60*60*24*15,
@@ -148,11 +158,11 @@ Can be '', ssl or tls */
 
 	"apps_paths" => array(
 
-/* Set an array of path for your apps directories
-key 'path' is for the fs path and the key 'url' is for the http path to your
-applications paths. 'writable' indicate if the user can install apps in this folder.
-You must have at least 1 app folder writable or you must set the parameter : appstoreenabled to false
- */
+	/* Set an array of path for your apps directories
+	key 'path' is for the fs path and the key 'url' is for the http path to your
+	applications paths. 'writable' indicate if the user can install apps in this folder.
+	You must have at least 1 app folder writable or you must set the parameter : appstoreenabled to false
+	 */
 		array(
 			'path'=> '/var/www/owncloud/apps',
 			'url' => '/apps',

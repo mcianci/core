@@ -695,16 +695,13 @@
 			</field>
 
 			<index>
-				<name>user_propertypath_index</name>
+				<name>property_index</name>
 				<field>
 					<name>userid</name>
 					<sorting>ascending</sorting>
 				</field>
-				<field>
-					<name>propertypath</name>
-					<sorting>ascending</sorting>
-				</field>
 			</index>
+
 		</declaration>
 
 	</table>
@@ -913,7 +910,6 @@
 				<name>displayname</name>
 				<type>text</type>
 				<default></default>
-				<notnull>true</notnull>
 				<length>64</length>
 			</field>
 
