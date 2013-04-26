@@ -73,3 +73,6 @@ data-autotest
 /tests/coverage*
 /tests/autoconfig*
 /tests/autotest*
+
+# nother apps directory
+apps2
