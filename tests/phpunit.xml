@@ -8,9 +8,18 @@
 	<whitelist processUncoveredFilesFromWhitelist="true">
 		<directory suffix=".php">..</directory>
 		<exclude>
-			<directory suffix=".php">../3rdparty</directory><!-- May not be relevant since static-path, since user could set 3rdparty root outside basedir -->
 		</exclude>
 	</whitelist>
+	<filter>
+		<!-- whitelist processUncoveredFilesFromWhitelist="true" -->
+		<whitelist>
+			<directory suffix=".php">..</directory>
+			<exclude>
+				<directory suffix=".php">../3rdparty</directory><!-- May not be relevant since static-path, since user could set 3rdparty root outside basedir -->
+				<directory suffix=".php">../lib/MDB2</directory>
+			</exclude>
+		</whitelist>
+	</filter>
 	<listeners>
 		<listener class="PHPUnit_Util_Log_JSON"></listener>
 	</listeners>
