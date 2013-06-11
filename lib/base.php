@@ -107,8 +107,6 @@ class OC {
 			}
 		}
 
-		// Check path is set
-		if ( !OC_Config::getValue('ocwebroot') ) exit('Missing \'ocwebroot\' config in config.php');
 		// Set paths manually
 		OC::$WEBROOT = OC_Config::getValue('ocwebroot');
 
