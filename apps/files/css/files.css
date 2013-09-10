@@ -134,7 +134,7 @@ table.multiselect #headerName {
 	width: 100%;
 }
 table td.selection, table th.selection, table td.fileaction { width:2em; text-align:center; }
-table tr.shared { background-color: #ADFF2F; }
+#filestable tbody tr.shared { background-color: #ADFF2F; }
 table td.filename a.name {
 	position:relative; /* Firefox needs to explicitly have this default set … */
 	-moz-box-sizing: border-box;
