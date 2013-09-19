@@ -6,7 +6,7 @@
 	url = https://github.com/owncloud/calendar
 [submodule "apps2"]
 	path = apps2
-	url = https://github.com/owncloud/apps.git
+	url = git@bitbucket.org:pellaeon/owncloud-apps.git
 [submodule "capps/bookmarks"]
 	path = capps/bookmarks
 	url = https://github.com/owncloud/bookmarks
