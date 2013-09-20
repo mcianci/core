@@ -24,3 +24,9 @@ https://www.transifex.com/projects/p/owncloud/
 
 For more detailed information about translations:
 http://owncloud.org/dev/translation/
+
+### NCTU Box Changes
+- Rewritten L10N
+- Highlight shared items (afdca3e92d2105757b7110e65471158a8c558e2b)
+- "occ auth <username> <password>" CLI command, useful for other programs to use ownCloud authentication (490adec60edf6e981130e9ef07f82cd55d0ec5e8)
+- Disable "Remember me" by default
