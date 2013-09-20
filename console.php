@@ -36,6 +36,22 @@ switch ($command) {
 	case 'status':
 		require_once 'status.php';
 		break;
+	case 'auth':
+		require_once 'lib/user.php';
+		require_once 'lib/util.php';
+		require_once 'lib/files/filesystem.php';
+		$uid = OC_User::checkPassword($argv[1], $argv[2]);
+		if ( $uid == false ) {
+			echo "auth_ok:-1\n";
+		} else {
+			echo "auth_ok:1\n";
+			echo "dir:".OC_User::getHome($uid)."\n";
+			$quota = OC_Util::getUserQuota($uid);
+			if ( $quota != \OC\Files\SPACE_UNLIMITED ) {
+				echo "user_quota_size:".$quota."\n";
+			}
+		}
+		break;
 	case 'help':
 		echo "Usage:" . PHP_EOL;
 		echo " " . $self . " <command>" . PHP_EOL;
