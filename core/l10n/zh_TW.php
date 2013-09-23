@@ -141,6 +141,18 @@ $TRANSLATIONS = array(
 "Log in" => "登入",
 "Alternative Logins" => "其他登入方法",
 "Hey there,<br><br>just letting you know that %s shared »%s« with you.<br><a href=\"%s\">View it!</a><br><br>Cheers!" => "嗨，<br><br>通知您一聲，%s 與您分享了 %s ，<br><a href=\"%s\">看一下吧</a>",
-"Updating ownCloud to version %s, this may take a while." => "正在將 ownCloud 升級至版本 %s ，這可能需要一點時間。"
+"Updating ownCloud to version %s, this may take a while." => "正在將 ownCloud 升級至版本 %s ，這可能需要一點時間。",
+"Email address you entered is not valid" => "您輸入的電子郵件地址無效",
+"There is already a pending registration with this email" => "這個電郵地址已經申請過帳號了",
+"Verify your ownCloud registration request" => "驗證您的 ownCloud 註冊申請",
+"Invalid verification URL. No registration request with this verification URL is found." => "無效的驗證網址，該網址沒有已知的註冊申請",
+"Your account have been created, you can <a href=\"%homeurl%\">log in now</a>." => "您的帳號已經建立，您可以<a href=\"%homeurl%\">馬上登入</a>",
+"To create a new account on ownCloud, just click the following link: {link}" => "點這個連結來建立新帳號：{link}",
+"Create account" => "建立帳號",
+"Thank you for registering, you should receive verification link in a few minutes." => "感謝您的註冊，您幾分鐘之後應該就會收到驗證用網址",
+"Email" => "電子郵件",
+"Request verification link" => "請求驗證連結",
+"Please re-enter a valid email address" => "請重新輸入一個有效的電郵地址",
+"You will receive an email with verification link" => "您會收到包含驗證用網址的電子郵件",
 );
 $PLURAL_FORMS = "nplurals=1; plural=0;";
