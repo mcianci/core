@@ -68,5 +68,7 @@ $this->create('settings_ajax_setloglevel', '/settings/ajax/setloglevel.php')
 	->actionInclude('settings/ajax/setloglevel.php');
 $this->create('settings_ajax_setsecurity', '/settings/ajax/setsecurity.php')
 	->actionInclude('settings/ajax/setsecurity.php');
+$this->create('settings_ajax_setregalloweddomain', '/settings/ajax/setregalloweddomain.php')
+	->actionInclude('settings/ajax/setregalloweddomain.php');
 $this->create('isadmin', '/settings/js/isadmin.js')
 	->actionInclude('settings/js/isadmin.php');

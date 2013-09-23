@@ -34,4 +34,7 @@ $(document).ready(function(){
 	$('#security').change(function(){
 		$.post(OC.filePath('settings','ajax','setsecurity.php'), { enforceHTTPS: $('#enforceHTTPSEnabled').val() },function(){} );
 	});
+
+	$('#registration').change(function(){
+		$.post(OC.filePath('settings','ajax','setregalloweddomain.php'), { allowedDomain: $('#allowedRegistrationDomain').val() }, function(){} );
 });

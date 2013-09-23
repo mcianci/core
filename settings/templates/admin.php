@@ -199,6 +199,19 @@ if (!$_['internetconnectionworking']) {
 	</table>
 </fieldset>
 
+<fieldset class="personalblock" id="registration">
+	<legend><strong><?php p($l->t('Registration'));?></strong></legend>
+	<table class="nostyle">
+		<tr>
+			<td id="enable">
+				<input type="text" name="registration_allowed_domain"  id="allowedRegistrationDomain" value="<?php p($_['allowedRegistrationDomain']);?>" />
+				<label for="registration_allowed_domain"><?php p($l->t('Allowed domains'));?></label><br/>
+				<em><?php p($l-t('Only allow email address with these domains to signup. Seperate multiple domains with whitespace, leave blank for no restriction.')); ?></em>
+			</td>
+		</tr>
+	</table>
+</fieldset>
+
 <fieldset class="personalblock">
 	<legend><strong><?php p($l->t('Log'));?></strong></legend>
 	<?php p($l->t('Log level'));?> <select name='loglevel' id='loglevel'>
