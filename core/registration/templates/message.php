@@ -1,4 +1,4 @@
-<?php if ( $_['errors'] ) { 
+<?php if ( $_['errors'] ) {
 	foreach ( $_['errors'] as $error ) { ?>
 	<div class="error">
 		<p><?php echo $error; ?></p>
