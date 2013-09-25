@@ -34,7 +34,17 @@ class OC_Core_Registration_Controller {
 			return;
 		}
 
-		// Check domain (not implemented)
+		// Check domains
+		$alloweddomains = OC_Appconfig::getValue('core', 'registration_allowed_domain', ''));
+		if ( $alloweddomains ) {
+			$alloweddomains = explode(' ', $alloweddomains);
+			$emaildomain = explode('@', $_POST['email'])[1];
+			if ( !array_search($emaildomain, $alloweddomains) ) {
+				self::displayRegisterPage(str_replace('%domains%', implode(', ', $alloweddomains), $l->t('Only email addresses from following domains are allowed: %domains%')), true);
+			}
+
+		}
+
 
 		$token = self::savePendingRegistration($_POST['email']);
 		if ( $token === false ) {
