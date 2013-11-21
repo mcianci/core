@@ -1,11 +1,14 @@
 <?php if ( $_['errors'] ) {
+	echo '<ul class="success">';
 	foreach ( $_['errors'] as $error ) { ?>
-	<div class="error">
-		<p><?php echo $error; ?></p>
-	</div>
+		<li><?php echo $error; ?></li>
 	<?php }
+	echo '</ul>';
 }
 if ( $_['messages'] ) {
+	echo '<ul class="success">';
 	foreach ($_['messages'] as $message ) {?>
-	<p><?php echo $message; ?> </p>
-	<?php } } ?>
+		<li><?php echo $message; ?></li>
+<?php	}
+	echo '</ul>';
+}?>

@@ -476,6 +476,18 @@ label.infield { cursor:text !important; top:1.05em; left:.85em; }
 	cursor: default;
 }
 
+#body-login .success {
+	color: #3cdd3c;
+}
+#body-login .success a {
+	color: white;
+	font-style: italic;
+}
+
+/* Warnings and errors are the same */
+#body-login .warning, #body-login .update, #body-login .error {
+	color: #d2322d;
+}
 #body-login .update {
 	text-align: center;
 	color: #ccc;
