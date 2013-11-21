@@ -182,5 +182,6 @@ $TRANSLATIONS = array(
 "Request verification link" => "請求驗證連結",
 "Please re-enter a valid email address" => "請重新輸入一個有效的電郵地址",
 "You will receive an email with verification link" => "您會收到包含驗證用網址的電子郵件",
+"There is already an account with that username, please choose another username" => "已經有人使用這個帳號名稱，請換一個",
 );
 $PLURAL_FORMS = "nplurals=1; plural=0;";

@@ -94,17 +94,23 @@ class OC_Core_Registration_Controller {
 				$deleted = $query->execute(array($email));
 				self::displayRegisterPage($l-t('Your registration request has expired, please make a new request below.'), false);
 			} else {
-				try {
-					OC_User::createUser($_POST['user'], $_POST['password']);
-				} catch (\Exception $e) {
-					self::displayRegisterForm(array($e->getMessage()), $_POST, $email);
+				if ( OC_User::userExists($_POST['user']) ) {
+					self::displayRegisterForm(array($l->t('There is already an account with that username, please choose another username')), $_POST, $email);
+				} else {
+					try {
+						OC_User::createUser($_POST['user'], $_POST['password']);
+					} catch (\Exception $e) {
+						self::displayRegisterForm(array($e->getMessage()), $_POST, $email);
+						return;
+					}
+					// mark registered after account successfully created
+					$query = OC_DB::prepare('UPDATE `*PREFIX*pending_regist` SET `registered`=1, `token`=NULL WHERE `email` = ? ');
+					$query->execute(array($email));
+					OC_Template::printGuestPage('core/registration', 'message',
+						array('errors' => array(),
+						'messages' => array(str_replace('{homeurl}', OC_Config::getValue('ocwebroot', '/'), $l->t('Your account have been created, you can <a href="{homeurl}">log in now</a>.')))
+					));
 				}
-				// delete request after account created
-				$query = OC_DB::prepare('DELETE FROM `*PREFIX*pending_regist` WHERE `email` = ? ');
-				$deleted = $query->execute(array($email));
-				OC_Template::printGuestPage('core/registration', 'message',
-					array('errors' => array(),
-					'messages' => array(str_replace('%homeurl%', OC_Config::getValue('ocwebroot', '/'), $l-t('Your account have been created, you can <a href="%homeurl%">log in now</a>.')));
 			}
 		} else {
 			OC_Template::printGuestPage('core', 'error',
