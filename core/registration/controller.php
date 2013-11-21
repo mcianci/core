@@ -103,6 +103,7 @@ class OC_Core_Registration_Controller {
 						self::displayRegisterForm(array($e->getMessage()), $_POST, $email);
 						return;
 					}
+					OC_Preferences::setValue($_POST['user'], 'settings', 'email', $email);
 					// mark registered after account successfully created
 					$query = OC_DB::prepare('UPDATE `*PREFIX*pending_regist` SET `registered`=1, `token`=NULL WHERE `email` = ? ');
 					$query->execute(array($email));
