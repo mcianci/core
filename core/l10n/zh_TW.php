@@ -174,7 +174,7 @@ $TRANSLATIONS = array(
 "There is already a pending registration with this email" => "這個電郵地址已經申請過帳號了",
 "Verify your ownCloud registration request" => "驗證您的 ownCloud 註冊申請",
 "Invalid verification URL. No registration request with this verification URL is found." => "無效的驗證網址，該網址沒有已知的註冊申請",
-"Your account have been created, you can <a href=\"%homeurl%\">log in now</a>." => "您的帳號已經建立，您可以<a href=\"%homeurl%\">馬上登入</a>",
+"Your account have been created, you can <a href=\"{homeurl}\">log in now</a>." => "您的帳號已經建立，您可以<a href=\"{homeurl}\">馬上登入</a>",
 "To create a new account on ownCloud, just click the following link: {link}" => "點這個連結來建立新帳號：{link}",
 "Create account" => "建立帳號",
 "Thank you for registering, you should receive verification link in a few minutes." => "感謝您的註冊，您幾分鐘之後應該就會收到驗證用網址",
