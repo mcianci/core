@@ -723,11 +723,17 @@ $(document).ready(function(){
 			}
 		}else if(event.keyCode===27){//esc
 			OC.search.hide();
+			if (FileList && typeof FileList.unfilter === 'function') { //TODO add hook system
+				FileList.unfilter();
+			}
 		}else{
 			var query=$('#searchbox').val();
 			if(OC.search.lastQuery!==query){
 				OC.search.lastQuery=query;
 				OC.search.currentResult=-1;
+				if (FileList && typeof FileList.filter === 'function') { //TODO add hook system
+						FileList.filter(query);
+				}
 				if(query.length>2){
 					OC.search(query);
 				}else{
@@ -740,15 +746,7 @@ $(document).ready(function(){
 	});
 
 	var setShowPassword = function(input, label) {
-		input.showPassword().keyup(function(){
-			if (input.val().length == 0) {
-				label.hide();
-			}
-			else {
-				label.css("display", "inline").show();
-			}
-		});
-		label.hide();
+		input.showPassword().keyup();
 	};
 	setShowPassword($('#adminpass'), $('label[for=show]'));
 	setShowPassword($('#pass2'), $('label[for=personal-show]'));
@@ -840,6 +838,13 @@ function formatDate(date){
 	return $.datepicker.formatDate(datepickerFormatDate, date)+' '+date.getHours()+':'+((date.getMinutes()<10)?'0':'')+date.getMinutes();
 }
 
+// taken from http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
+function getURLParameter(name) {
+	return decodeURI(
+			(RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, null])[1]
+			);
+}
+
 /**
  * takes an absolute timestamp and return a string with a human-friendly relative date
  * @param int a Unix timestamp
@@ -906,7 +911,7 @@ OC.set=function(name, value) {
  * @param {type} start
  * @param {type} end
  */
-$.fn.selectRange = function(start, end) {
+jQuery.fn.selectRange = function(start, end) {
 	return this.each(function() {
 		if (this.setSelectionRange) {
 			this.focus();
@@ -919,6 +924,15 @@ $.fn.selectRange = function(start, end) {
 			range.select();
 		}
 	});
+};
+
+/**
+ * check if an element exists.
+ * allows you to write if ($('#myid').exists()) to increase readability
+ * @link http://stackoverflow.com/questions/31044/is-there-an-exists-function-for-jquery
+ */
+jQuery.fn.exists = function(){
+	return this.length > 0;
 };
 
 /**

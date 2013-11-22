@@ -8,6 +8,8 @@ $TRANSLATIONS = array(
 "Users" => "Brugere",
 "Admin" => "Admin",
 "Failed to upgrade \"%s\"." => "Upgradering af \"%s\" fejlede",
+"Unknown filetype" => "Ukendt filtype",
+"Invalid image" => "Ugyldigt billede",
 "web services under your control" => "Webtjenester under din kontrol",
 "cannot open \"%s\"" => "Kan ikke åbne \"%s\"",
 "ZIP download is turned off." => "ZIP-download er slået fra.",
@@ -53,6 +55,7 @@ $TRANSLATIONS = array(
 "Set an admin password." => "Angiv et admin kodeord.",
 "Your web server is not yet properly setup to allow files synchronization because the WebDAV interface seems to be broken." => "Din webserver er endnu ikke sat op til at tillade fil synkronisering fordi WebDAV grænsefladen virker ødelagt.",
 "Please double check the <a href='%s'>installation guides</a>." => "Dobbelttjek venligst <a href='%s'>installations vejledningerne</a>.",
+"Could not find category \"%s\"" => "Kunne ikke finde kategorien \"%s\"",
 "seconds ago" => "sekunder siden",
 "_%n minute ago_::_%n minutes ago_" => array("%n minut siden","%n minutter siden"),
 "_%n hour ago_::_%n hours ago_" => array("%n time siden","%n timer siden"),
@@ -63,7 +66,6 @@ $TRANSLATIONS = array(
 "_%n month ago_::_%n months ago_" => array("%n måned siden","%n måneder siden"),
 "last year" => "sidste år",
 "years ago" => "år siden",
-"Caused by:" => "Forårsaget af:",
-"Could not find category \"%s\"" => "Kunne ikke finde kategorien \"%s\""
+"Caused by:" => "Forårsaget af:"
 );
 $PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

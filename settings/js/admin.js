@@ -32,7 +32,7 @@ $(document).ready(function(){
 	});
 
 	$('#security').change(function(){
-		$.post(OC.filePath('settings','ajax','setsecurity.php'), { enforceHTTPS: $('#enforceHTTPSEnabled').val() },function(){} );
+		$.post(OC.filePath('settings','ajax','setsecurity.php'), { enforceHTTPS: $('#forcessl').val() },function(){} );
 	});
 
 	$('#registration').change(function(){

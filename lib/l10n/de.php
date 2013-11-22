@@ -8,6 +8,8 @@ $TRANSLATIONS = array(
 "Users" => "Benutzer",
 "Admin" => "Administration",
 "Failed to upgrade \"%s\"." => "Konnte \"%s\" nicht aktualisieren.",
+"Unknown filetype" => "Unbekannter Dateityp",
+"Invalid image" => "Ungültiges Bild",
 "web services under your control" => "Web-Services unter Deiner Kontrolle",
 "cannot open \"%s\"" => "Öffnen von \"%s\" fehlgeschlagen",
 "ZIP download is turned off." => "Der ZIP-Download ist deaktiviert.",
@@ -53,17 +55,17 @@ $TRANSLATIONS = array(
 "Set an admin password." => "Setze Administrator Passwort",
 "Your web server is not yet properly setup to allow files synchronization because the WebDAV interface seems to be broken." => "Dein Web-Server ist noch nicht für Datei-Synchronisation bereit, weil die WebDAV-Schnittstelle vermutlich defekt ist.",
 "Please double check the <a href='%s'>installation guides</a>." => "Bitte prüfe die <a href='%s'>Installationsanleitungen</a>.",
+"Could not find category \"%s\"" => "Die Kategorie \"%s\" konnte nicht gefunden werden.",
 "seconds ago" => "Gerade eben",
-"_%n minute ago_::_%n minutes ago_" => array("","Vor %n Minuten"),
-"_%n hour ago_::_%n hours ago_" => array("","Vor %n Stunden"),
+"_%n minute ago_::_%n minutes ago_" => array("Vor %n Minute","Vor %n Minuten"),
+"_%n hour ago_::_%n hours ago_" => array("Vor %n Stunde","Vor %n Stunden"),
 "today" => "Heute",
 "yesterday" => "Gestern",
-"_%n day go_::_%n days ago_" => array("","Vor %n Tagen"),
+"_%n day go_::_%n days ago_" => array("Vor %n Tag","Vor %n Tagen"),
 "last month" => "Letzten Monat",
-"_%n month ago_::_%n months ago_" => array("","Vor %n Monaten"),
+"_%n month ago_::_%n months ago_" => array("Vor %n Monat","Vor %n Monaten"),
 "last year" => "Letztes Jahr",
 "years ago" => "Vor Jahren",
-"Caused by:" => "Verursacht durch:",
-"Could not find category \"%s\"" => "Die Kategorie \"%s\" konnte nicht gefunden werden."
+"Caused by:" => "Verursacht durch:"
 );
 $PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

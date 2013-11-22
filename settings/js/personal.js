@@ -31,9 +31,10 @@ function changeDisplayName(){
         // Ajax foo
         $.post( 'ajax/changedisplayname.php', post, function(data){
             if( data.status === "success" ){
-                $('#oldDisplayName').text($('#displayName').val());
+                $('#oldDisplayName').val($('#displayName').val());
                 // update displayName on the top right expand button
                 $('#expandDisplayName').text($('#displayName').val());
+                updateAvatar();
             }
             else{
                 $('#newdisplayname').val(data.data.displayName);
@@ -44,12 +45,16 @@ function changeDisplayName(){
     }
 }
 
-function updateAvatar () {
+function updateAvatar (hidedefault) {
 	$headerdiv = $('#header .avatardiv');
 	$displaydiv = $('#displayavatar .avatardiv');
 
-	$headerdiv.css({'background-color': ''});
-	$headerdiv.avatar(OC.currentUser, 32, true);
+	if(hidedefault) {
+		$headerdiv.hide();
+	} else {
+		$headerdiv.css({'background-color': ''});
+		$headerdiv.avatar(OC.currentUser, 32, true);
+	}
 	$displaydiv.css({'background-color': ''});
 	$displaydiv.avatar(OC.currentUser, 128, true);
 }
@@ -124,14 +129,17 @@ $(document).ready(function(){
 			$('#passwordchanged').hide();
 			$('#passworderror').hide();
 			// Ajax foo
-			$.post( 'ajax/changepassword.php', post, function(data){
+			$.post(OC.Router.generate('settings_personal_changepassword'), post, function(data){
 				if( data.status === "success" ){
 					$('#pass1').val('');
 					$('#pass2').val('');
 					$('#passwordchanged').show();
-				}
-				else{
-					$('#passworderror').html( data.data.message );
+				} else{
+					if (typeof(data.data) !== "undefined") {
+						$('#passworderror').html(data.data.message);
+					} else {
+						$('#passworderror').html(t('Unable to change password'));
+					}
 					$('#passworderror').show();
 				}
 			});
@@ -162,11 +170,6 @@ $(document).ready(function(){
             timeout = setTimeout('changeEmailAddress()',1000);
         }
     });
-
-	$("#languageinput").chosen();
-	// Show only the not selectable optgroup
-	// Choosen only shows optgroup-labels if there are options in the optgroup
-	$(".languagedivider").hide();
 
 	$("#languageinput").change( function(){
 		// Serialize the data
@@ -228,7 +231,7 @@ $(document).ready(function(){
 			type:	'DELETE',
 			url:	OC.Router.generate('core_avatar_delete'),
 			success: function(msg) {
-				updateAvatar();
+				updateAvatar(true);
 			}
 		});
 	});

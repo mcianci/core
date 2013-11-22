@@ -8,6 +8,8 @@ $TRANSLATIONS = array(
 "Users" => "Usuarios",
 "Admin" => "Administración",
 "Failed to upgrade \"%s\"." => "No se pudo actualizar \"%s\".",
+"Unknown filetype" => "Tipo de archivo desconocido",
+"Invalid image" => "Imagen inválida",
 "web services under your control" => "servicios web sobre los que tenés control",
 "cannot open \"%s\"" => "no se puede abrir \"%s\"",
 "ZIP download is turned off." => "La descarga en ZIP está desactivada.",
@@ -53,6 +55,7 @@ $TRANSLATIONS = array(
 "Set an admin password." => "Configurar una contraseña de administrador.",
 "Your web server is not yet properly setup to allow files synchronization because the WebDAV interface seems to be broken." => "Tu servidor web no está configurado todavía para permitir sincronización de archivos porque la interfaz WebDAV parece no funcionar.",
 "Please double check the <a href='%s'>installation guides</a>." => "Por favor, comprobá nuevamente la <a href='%s'>guía de instalación</a>.",
+"Could not find category \"%s\"" => "No fue posible encontrar la categoría \"%s\"",
 "seconds ago" => "segundos atrás",
 "_%n minute ago_::_%n minutes ago_" => array("Hace %n minuto","Hace %n minutos"),
 "_%n hour ago_::_%n hours ago_" => array("Hace %n hora","Hace %n horas"),
@@ -63,7 +66,6 @@ $TRANSLATIONS = array(
 "_%n month ago_::_%n months ago_" => array("Hace %n mes","Hace %n meses"),
 "last year" => "el año pasado",
 "years ago" => "años atrás",
-"Caused by:" => "Provocado por:",
-"Could not find category \"%s\"" => "No fue posible encontrar la categoría \"%s\""
+"Caused by:" => "Provocado por:"
 );
 $PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

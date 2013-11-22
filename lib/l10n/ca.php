@@ -8,6 +8,8 @@ $TRANSLATIONS = array(
 "Users" => "Usuaris",
 "Admin" => "Administració",
 "Failed to upgrade \"%s\"." => "Ha fallat l'actualització \"%s\".",
+"Unknown filetype" => "Tipus de fitxer desconegut",
+"Invalid image" => "Imatge no vàlida",
 "web services under your control" => "controleu els vostres serveis web",
 "cannot open \"%s\"" => "no es pot obrir \"%s\"",
 "ZIP download is turned off." => "La baixada en ZIP està desactivada.",
@@ -53,6 +55,7 @@ $TRANSLATIONS = array(
 "Set an admin password." => "Establiu una contrasenya per l'administrador.",
 "Your web server is not yet properly setup to allow files synchronization because the WebDAV interface seems to be broken." => "El servidor web no està configurat correctament per permetre la sincronització de fitxers perquè la interfície WebDAV sembla no funcionar correctament.",
 "Please double check the <a href='%s'>installation guides</a>." => "Comproveu les <a href='%s'>guies d'instal·lació</a>.",
+"Could not find category \"%s\"" => "No s'ha trobat la categoria \"%s\"",
 "seconds ago" => "segons enrere",
 "_%n minute ago_::_%n minutes ago_" => array("fa %n minut","fa %n minuts"),
 "_%n hour ago_::_%n hours ago_" => array("fa %n hora","fa %n hores"),
@@ -63,7 +66,6 @@ $TRANSLATIONS = array(
 "_%n month ago_::_%n months ago_" => array("fa %n mes","fa %n mesos"),
 "last year" => "l'any passat",
 "years ago" => "anys enrere",
-"Caused by:" => "Provocat per:",
-"Could not find category \"%s\"" => "No s'ha trobat la categoria \"%s\""
+"Caused by:" => "Provocat per:"
 );
 $PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

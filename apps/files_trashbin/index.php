@@ -5,7 +5,6 @@ OCP\User::checkLoggedIn();
 
 OCP\App::setActiveNavigationEntry('files_index');
 
-OCP\Util::addScript('files_trashbin', 'trash');
 OCP\Util::addScript('files_trashbin', 'disableDefaultActions');
 OCP\Util::addScript('files', 'fileactions');
 $tmpl = new OCP\Template('files_trashbin', 'index', 'user');
@@ -15,6 +14,7 @@ OCP\Util::addScript('files', 'filelist');
 // filelist overrides
 OCP\Util::addScript('files_trashbin', 'filelist');
 OCP\Util::addscript('files', 'files');
+OCP\Util::addScript('files_trashbin', 'trash');
 
 $dir = isset($_GET['dir']) ? stripslashes($_GET['dir']) : '';
 
@@ -36,7 +36,7 @@ if ($isIE8 && isset($_GET['dir'])){
 $ajaxLoad = false;
 
 if (!$isIE8){
-	$files = \OCA\files_trashbin\lib\Helper::getTrashFiles($dir);
+	$files = \OCA\Files_Trashbin\Helper::getTrashFiles($dir);
 }
 else{
 	$files = array();
@@ -54,7 +54,7 @@ if ($dir && $dir !== '/') {
     $dirlisting = true;
 }
 
-$breadcrumb = \OCA\files_trashbin\lib\Helper::makeBreadcrumb($dir);
+$breadcrumb = \OCA\Files_Trashbin\Helper::makeBreadcrumb($dir);
 
 $breadcrumbNav = new OCP\Template('files_trashbin', 'part.breadcrumb', '');
 $breadcrumbNav->assign('breadcrumb', $breadcrumb);

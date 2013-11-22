@@ -8,6 +8,8 @@ $TRANSLATIONS = array(
 "Users" => "Kullanıcılar",
 "Admin" => "Yönetici",
 "Failed to upgrade \"%s\"." => "\"%s\" yükseltme başarısız oldu.",
+"Unknown filetype" => "Bilinmeyen dosya türü",
+"Invalid image" => "Geçersiz resim",
 "web services under your control" => "Bilgileriniz güvenli ve şifreli",
 "cannot open \"%s\"" => "\"%s\" açılamıyor",
 "ZIP download is turned off." => "ZIP indirmeleri kapatılmıştır.",
@@ -53,6 +55,7 @@ $TRANSLATIONS = array(
 "Set an admin password." => "Parola yonetici birlemek. ",
 "Your web server is not yet properly setup to allow files synchronization because the WebDAV interface seems to be broken." => "Web sunucunuz dosya transferi için düzgün bir şekilde yapılandırılmamış. WevDAV arabirimini sorunlu gözüküyor.",
 "Please double check the <a href='%s'>installation guides</a>." => "Lütfen <a href='%s'>kurulum kılavuzlarını</a> iki kez kontrol edin.",
+"Could not find category \"%s\"" => "\"%s\" kategorisi bulunamadı",
 "seconds ago" => "saniye önce",
 "_%n minute ago_::_%n minutes ago_" => array("","%n dakika önce"),
 "_%n hour ago_::_%n hours ago_" => array("","%n saat önce"),
@@ -63,7 +66,6 @@ $TRANSLATIONS = array(
 "_%n month ago_::_%n months ago_" => array("","%n ay önce"),
 "last year" => "geçen yıl",
 "years ago" => "yıl önce",
-"Caused by:" => "Neden olan:",
-"Could not find category \"%s\"" => "\"%s\" kategorisi bulunamadı"
+"Caused by:" => "Neden olan:"
 );
 $PLURAL_FORMS = "nplurals=2; plural=(n > 1);";

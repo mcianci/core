@@ -8,6 +8,8 @@ $TRANSLATIONS = array(
 "Users" => "ユーザ",
 "Admin" => "管理",
 "Failed to upgrade \"%s\"." => "\"%s\" へのアップグレードに失敗しました。",
+"Unknown filetype" => "不明なファイルタイプ",
+"Invalid image" => "無効な画像",
 "web services under your control" => "管理下のウェブサービス",
 "cannot open \"%s\"" => "\"%s\" が開けません",
 "ZIP download is turned off." => "ZIPダウンロードは無効です。",
@@ -53,17 +55,17 @@ $TRANSLATIONS = array(
 "Set an admin password." => "管理者のパスワードを設定。",
 "Your web server is not yet properly setup to allow files synchronization because the WebDAV interface seems to be broken." => "WebDAVインタフェースが動作していないと考えられるため、あなたのWEBサーバはまだファイルの同期を許可するように適切な設定がされていません。",
 "Please double check the <a href='%s'>installation guides</a>." => "<a href='%s'>インストールガイド</a>をよく確認してください。",
+"Could not find category \"%s\"" => "カテゴリ \"%s\" が見つかりませんでした",
 "seconds ago" => "数秒前",
 "_%n minute ago_::_%n minutes ago_" => array("%n 分前"),
-"_%n hour ago_::_%n hours ago_" => array("%n 時間後"),
+"_%n hour ago_::_%n hours ago_" => array("%n 時間前"),
 "today" => "今日",
 "yesterday" => "昨日",
-"_%n day go_::_%n days ago_" => array("%n 日後"),
+"_%n day go_::_%n days ago_" => array("%n 日前"),
 "last month" => "一月前",
-"_%n month ago_::_%n months ago_" => array("%n カ月後"),
+"_%n month ago_::_%n months ago_" => array("%n ヶ月前"),
 "last year" => "一年前",
 "years ago" => "年前",
-"Caused by:" => "原因は以下:",
-"Could not find category \"%s\"" => "カテゴリ \"%s\" が見つかりませんでした"
+"Caused by:" => "原因:"
 );
 $PLURAL_FORMS = "nplurals=1; plural=0;";
