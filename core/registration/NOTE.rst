@@ -7,7 +7,7 @@ Plan A
 ------
 1. User clicks *Register*
 2. User enters email
-   a. Use JS to check user email domain (email domain configured in admin settings).
+   a. Use JS to check user email domain (email domain configured in admin settings). 
    Notify when email domain does not match the configured domain. Possible messages:
    *We currently only allow the following email domains: @nctu.edu.tw* /
    *We currently only allow email domains that match the following pattern* <- not user friendly
