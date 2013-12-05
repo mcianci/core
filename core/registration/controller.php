@@ -35,10 +35,10 @@ class OC_Core_Registration_Controller {
 		}
 
 		// Check domains
-		$alloweddomains = OC_Appconfig::getValue('core', 'registration_allowed_domain', ''));
+		$alloweddomains = OC_Appconfig::getValue('core', 'registration_allowed_domain', '');
 		if ( $alloweddomains ) {
 			$alloweddomains = explode(' ', $alloweddomains);
-			$emaildomain = explode('@', $_POST['email'])[1];
+			$emaildomain = explode('@', $_POST['email'])/*[1]*/;
 			if ( !array_search($emaildomain, $alloweddomains) ) {
 				self::displayRegisterPage(str_replace('%domains%', implode(', ', $alloweddomains), $l->t('Only email addresses from following domains are allowed: %domains%')), true);
 			}
@@ -137,7 +137,7 @@ class OC_Core_Registration_Controller {
 		} else {
 			$query = OC_DB::prepare( 'INSERT INTO `*PREFIX*pending_regist`'
 				.' ( `email`, `token`, `requested` ) VALUES( ?, ?, ? )' );
-			$token = hash('sha256', OC_Util::generate_random_bytes(30).OC_Config::getValue('passwordsalt', ''));
+			$token = hash('sha256', OC_Util::generateRandomBytes(30).OC_Config::getValue('passwordsalt', ''));
 			$query->execute(array( $email, $token, time() ));
 			return $token;
 		}
